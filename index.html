@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The EventHorizon App</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+
+<body>
+
+<header>
+    <div class="header-content">
+        <h2>The Event Horizon App</h2>
+    </div>
+</header>
+
+<p id="inspirational-quote"></p>
+
+<h1 id="event-title">New Years Eve</h1>
+
+<div class="event-selector">
+    <label for="event-dropdown">Choose an event: </label>
+    <select id="event-dropdown">
+        <option value="1 Jan">New Year</option>
+        <option value="10 Feb">Lunar New Year</option>
+        <option value="9 Nov">My Birthday</option>
+    </select>
+    <label for="custom-event-name">OR Create a New Event:</label>
+    <label for="custom-event-name">Event name: </label>
+    <input type="text" id="custom-event-name">
+    <label for="custom-event">Event date: </label>
+    <input type="date" id="custom-event">
+    <button onclick="updateEvent()">Set Event</button>
+    <p id="date-warning" style="color:red;"></p>
+</div>
+
+<div class="countdown-container">
+    <div class="countdown-el days-c">
+        <p class="big-text" id="days">0</p>
+        <span>days</span>
+    </div>
+    <div class="countdown-el hours-c">
+        <p class="big-text" id="hours">0</p>
+        <span>hours</span>
+    </div>
+    <div class="countdown-el mins-c">
+        <p class="big-text" id="mins">0</p>
+        <span>mins</span>
+    </div>
+    <div class="countdown-el seconds-c">
+        <p class="big-text" id="seconds">0</p>
+        <span>seconds</span>
+    </div>
+</div>
+
+<div id="custom-events-list">
+    <h3>Your Recently Added Events:</h3>
+    <ul></ul>
+</div>
+
+<button onclick="navigateToAboutPage()" style="margin-bottom: 10px">About</button>
+
+</body>
+</html>
