@@ -10,7 +10,7 @@ const customEventInput = document.getElementById("custom-event");
 let currentEventDate = "1 Jan 2024";
 
 const customEventNameInput = document.getElementById("custom-event-name");
-
+const aboutText = document.getElementById("about-text");
 const dateWarning = document.getElementById("date-warning");
 
 const quotes = [
@@ -44,12 +44,18 @@ function setRandomBackgroundImage() {
     const chosenImage = bgImages[randomIndex];
     document.body.style.backgroundImage = chosenImage.url;
     const textColor = chosenImage.isDark ? "white" : "black";
+
     document.getElementById('inspirational-quote').style.color = textColor;
     document.getElementById('event-title').style.color = textColor;
     document.getElementById('custom-events-list').style.color = textColor;
     document.body.style.color = textColor;
+
     const labels = document.querySelectorAll('.event-selector label');
     labels.forEach(label => label.style.color = textColor);
+
+    if (aboutText) {
+        aboutText.style.color = textColor;
+    }
 }
 
 function updateEvent() {
@@ -111,6 +117,11 @@ eventDropdown.addEventListener("change", function() {
     }
     countdown();
 });
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    setRandomBackgroundImage();
+});
+
 
 document.addEventListener('DOMContentLoaded', function() {
     const lastEvent = JSON.parse(localStorage.getItem('lastEvent'));

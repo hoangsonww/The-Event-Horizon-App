@@ -6,9 +6,13 @@
   <title>About Page</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
-<h1>About The EventHorizon App</h1>
-<p style="text-align: center">
+<body onload="setRandomBackgroundImage()">
+<header>
+  <div class="header-content">
+    <h2>About The Event Horizon App</h2>
+  </div>
+</header>
+<p id="about-text" style="text-align: center">
   This app will act as a countdown timer that allows users to anticipate and count down to major events in their lives. Users can select from predefined events or create custom events, setting both the event name and date. Created by Son Nguyen Hoang in October 2023.
 </p>
 
@@ -20,6 +24,7 @@
 
 <button onclick="navigateBack()">Back to Countdown</button>
 
+<script src="script.js"></script>
 <script>
   function navigateBack() {
     window.location.href = "index.html";
