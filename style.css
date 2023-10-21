@@ -217,3 +217,58 @@ button:active {
     transform: translateY(0);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
+
+#chatbotContainer {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    width: 300px;
+    max-height: 400px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(90deg, #53341C 0%, #a85432 100%);
+    overflow: hidden;
+    font-family: "Poppins", sans-serif;
+}
+
+#chatbotHeader {
+    background: linear-gradient(90deg, #53341C 0%, #a85432 100%);
+    padding: 10px;
+    color: white;
+    text-align: center;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    font-weight: 600;
+}
+
+#chatbotBody {
+    overflow-y: auto;
+    max-height: 300px;
+    padding: 10px;
+    background: linear-gradient(90deg, #53341C 0%, #a85432 100%);
+    color: white;
+}
+
+#chatbotInput {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    color: white;
+    background: linear-gradient(90deg, #53341C 0%, #a85432 100%);
+    outline: none;
+    box-shadow: none;
+}
+
+#chatbotBody .message {
+    padding: 5px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: #e0e0e0;
+    color: white;
+}
+
+#chatbotBody .message.user {
+    background: linear-gradient(90deg, #53341C 0%, #a85432 100%);
+    color: white;
+    align-self: flex-end;
+}
