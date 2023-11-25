@@ -119,9 +119,13 @@ eventDropdown.addEventListener("change", function() {
 });
 
 document.addEventListener('DOMContentLoaded', (event) => {
+    const lastViewedCity = localStorage.getItem('lastViewedCity');
+    if (lastViewedCity) {
+        document.getElementById('weatherLocation').value = lastViewedCity;
+        fetchWeather(); // Fetch weather for the last viewed city
+    }
     setRandomBackgroundImage();
 });
-
 
 document.addEventListener('DOMContentLoaded', function() {
     const lastEvent = JSON.parse(localStorage.getItem('lastEvent'));
@@ -142,6 +146,38 @@ function addCustomEventToList(name, date) {
     customEvents.push({ name, date });
     localStorage.setItem('customEvents', JSON.stringify(customEvents));
     displayCustomEvents();
+}
+
+function shareEvent() {
+    // Assuming you have a modal element in your HTML to show the shareable link
+    const shareModal = document.getElementById('shareModal');
+    const shareLinkInput = document.getElementById('shareLink');
+
+    // Get event details
+    const eventName = eventTitle.textContent;
+    const eventDate = currentEventDate;
+
+    // Generate a shareable link
+    const shareLink = `${window.location.href}?event=${encodeURIComponent(eventName)}&date=${encodeURIComponent(eventDate)}`;
+    shareLinkInput.value = shareLink;
+
+    document.getElementById('facebookShare').href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareLink)}`;
+    document.getElementById('twitterShare').href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(eventName)}&url=${encodeURIComponent(shareLink)}`;
+    document.getElementById('emailShare').href = `mailto:?subject=${encodeURIComponent(eventName)}&body=Check out this event: ${encodeURIComponent(shareLink)}`;
+
+    // Show the modal
+    shareModal.style.display = 'block';
+}
+
+function closeModal() {
+    const shareModal = document.getElementById('shareModal');
+    shareModal.style.display = 'none';
+}
+
+function copyToClipboard() {
+    const shareLinkInput = document.getElementById('shareLink');
+    shareLinkInput.select();
+    document.execCommand('copy');
 }
 
 function displayCustomEvents() {
@@ -261,10 +297,22 @@ function sendMessage(message) {
     }, 1000);
 }
 
+function generateUniqueLink(name, date) {
+    // Encode the event details into a query string
+    return `${window.location.origin}${window.location.pathname}?event=${encodeURIComponent(name)}&date=${encodeURIComponent(date)}`;
+}
+
+function getEventDetailsFromUrl() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const eventName = urlParams.get('event');
+    const eventDate = urlParams.get('date');
+    return { eventName, eventDate };
+}
+
 const changeBackgroundBtn = document.createElement("button");
 changeBackgroundBtn.textContent = "Change Background";
 changeBackgroundBtn.style.position = "fixed";
-changeBackgroundBtn.style.bottom = "50px";
+changeBackgroundBtn.style.bottom = "10px";
 changeBackgroundBtn.style.left = "10px";
 changeBackgroundBtn.onclick = function() {
     setRandomBackgroundImage();
@@ -276,3 +324,160 @@ countdown();
 displayRandomQuote();
 setRandomBackgroundImage();
 setInterval(countdown, 1000);
+
+const reminderInput = document.getElementById('reminder-time');
+
+function setReminder() {
+    const reminderHours = reminderInput.value;
+    const reminderTime = new Date(currentEventDate);
+    reminderTime.setHours(reminderTime.getHours() - reminderHours);
+
+    // Save reminder time in localStorage or a suitable place
+    localStorage.setItem('eventReminder', JSON.stringify({ date: reminderTime, eventName: eventTitle.textContent }));
+
+    // Show a message to the user
+    alert(`Reminder set for ${eventTitle.textContent} ${reminderHours} hours before the event.`);
+}
+
+// Function to check for any reminders
+function checkForReminders() {
+    const reminderData = JSON.parse(localStorage.getItem('eventReminder'));
+    if (reminderData) {
+        const now = new Date();
+        const reminderTime = new Date(reminderData.date);
+
+        if (now >= reminderTime) {
+            alert(`Reminder: ${reminderData.eventName} is coming up!`);
+            localStorage.removeItem('eventReminder'); // Remove the reminder after notifying
+        }
+    }
+}
+
+// Call checkForReminders at regular intervals
+setInterval(checkForReminders, 60000); // Check every minute
+
+const notesInput = document.getElementById('eventNotes');
+
+function saveNotes() {
+    const notes = notesInput.value;
+    localStorage.setItem('eventNotes', notes);
+    alert('Notes saved!');
+}
+
+// Function to load notes when the app starts
+function loadNotes() {
+    const savedNotes = localStorage.getItem('eventNotes');
+    if (savedNotes) {
+        notesInput.value = savedNotes;
+    }
+}
+
+document.addEventListener('DOMContentLoaded', loadNotes);
+
+function toggleNotes() {
+    const notesContent = document.getElementById('notesContent');
+    const toggleNotesButton = document.getElementById('toggleNotesButton');
+
+    // Check if the content is currently displayed
+    if (notesContent.style.display === 'none') {
+        notesContent.style.display = 'block'; // Show the content
+        toggleNotesButton.textContent = '−';   // Set the button to indicate minimizing
+    } else {
+        notesContent.style.display = 'none';  // Hide the content
+        toggleNotesButton.textContent = '+';   // Set the button to indicate expanding
+    }
+}
+
+// Ensure the content area is hidden on page load if there are no notes
+document.addEventListener('DOMContentLoaded', function() {
+    loadNotes();
+    if (!notesInput.value) {
+        toggleNotes(); // Minimize if the textarea is empty
+    }
+});
+
+const openWeatherApiKey = '593309284d3eb093ee96647eb294905b';
+
+async function fetchWeather() {
+    const location = document.getElementById('weatherLocation').value;
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${openWeatherApiKey}&units=metric`;
+
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error('Weather data not found');
+        }
+        const data = await response.json();
+        displayWeather(data);
+        // Save the city name in local storage if the fetch was successful
+        localStorage.setItem('lastViewedCity', location);
+    }
+    catch (error) {
+        console.error('Failed to fetch weather data:', error);
+        alert('Failed to fetch weather data');
+    }
+}
+
+function displayWeather(data) {
+    const weatherDisplay = document.getElementById('weatherDisplay');
+    const temperature = Math.round(data.main.temp); // Round to the nearest integer
+    const chanceOfRain = data.rain ? data.rain['1h'] : '0'; // Assuming '1h' data is available
+
+    weatherDisplay.innerHTML = `
+        <p><strong>${data.name}</strong></p>
+        <p>Temperature: <strong>${temperature}°C</strong></p>
+        <p>Weather: <strong>${data.weather[0].main}</strong></p>
+        <p>Humidity: <strong>${data.main.humidity}%</strong></p>
+        <p>Chance of Rain: <strong>${chanceOfRain}%</strong></p>
+    `;
+}
+
+const eventTips = [
+    "Tip: Start planning early to avoid last-minute stress.",
+    "Tip: Use a theme to make your event memorable.",
+    "Tip: Check your guest list twice to make sure no one's missed.",
+    "Tip: Always have a plan B in case of unexpected changes.",
+    "Tip: Remember to send out invitations at least three weeks in advance.",
+    "Tip: Consider dietary restrictions and preferences when planning your menu.",
+    "Tip: Create a playlist to set the mood for your event.",
+    "Tip: If it's an outdoor event, always have an indoor backup plan.",
+    "Tip: Engage your guests with interactive activities or ice-breakers.",
+    "Tip: Personalize your event with custom decorations or favors.",
+    "Tip: Allocate tasks to a team to make event management smoother.",
+    "Tip: Use digital tools for RSVPs to keep track of your guest list easily.",
+    "Tip: Keep a checklist to track all your event planning details.",
+    "Tip: Follow up with your vendors a week before the event to confirm details.",
+    "Tip: Don't forget to check the weather forecast to prepare for any outdoor events.",
+    "Tip: Create a checklist to keep track of all the tasks you need to complete before the event.",
+    "Tip: Send out invitations early to ensure your guests can save the date.",
+    "Tip: Consider dietary restrictions and allergies when planning the event menu.",
+    "Tip: Delegate tasks to friends or family to help ease the planning process.",
+    // And many more...
+];
+
+function displayDailyTip() {
+    const dailyTipElement = document.getElementById('dailyTip');
+    const randomIndex = Math.floor(Math.random() * eventTips.length);
+    dailyTipElement.textContent = eventTips[randomIndex];
+}
+
+document.addEventListener('DOMContentLoaded', displayDailyTip);
+
+function toggleChatbot() {
+    const chatbotBody = document.getElementById('chatbotBody');
+    const chatbotInput = document.getElementById('chatbotInput');
+    const minimizeChatbot = document.getElementById('minimizeChatbot');
+
+    if (chatbotBody.style.display === 'none') {
+        chatbotBody.style.display = 'block';
+        chatbotInput.style.display = 'block';
+        minimizeChatbot.textContent = '−';
+    } else {
+        chatbotBody.style.display = 'none';
+        chatbotInput.style.display = 'none';
+        minimizeChatbot.textContent = '+';
+    }
+}
+
+// Call this function to initialize the chatbot as minimized
+toggleChatbot();
