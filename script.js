@@ -27,10 +27,10 @@ const quotes = [
 const bgImages = [
     {url: 'url("./snow.jpg")', isDark: false}, // Mostly white
     {url: 'url("R.jfif")', isDark: true},      // Mostly dark
-    {url: 'url("R (1).jfif")', isDark: true},  // Mostly dark (assuming from your description)
-    {url: 'url("j1O8bCz.jpg")', isDark: true}, // Mostly dark (assuming from your description)
-    {url: 'url("wp4670197.jpg")', isDark: true}, // Mostly dark (assuming from your description)
-    {url: 'url("wp4511352.jpg")', isDark: true}  // Mostly dark (assuming from your description)
+    {url: 'url("R (1).jfif")', isDark: false},  // Mostly dark
+    {url: 'url("j1O8bCz.jpg")', isDark: true}, // Mostly dark
+    {url: 'url("wp4670197.jpg")', isDark: true}, // Mostly dark
+    {url: 'url("wp4511352.jpg")', isDark: true}  // Mostly dark
 ];
 
 function displayRandomQuote() {

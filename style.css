@@ -91,6 +91,9 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 8px;
 }
 
 .reminder-setup label,
@@ -144,6 +147,9 @@ h1 {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    background: none;
+    margin-top: 10px;
+    border-radius: 8px;
 }
 
 .big-text {
