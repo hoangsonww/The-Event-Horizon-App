@@ -506,3 +506,23 @@ a:active {
     margin: 0;
     padding: 5px;
 }
+
+/* Default styles for mobile - hide elements */
+#dailyTipWidget,
+.weather-widget,
+#chatbotContainer,
+#notesWidget,
+#changeBackgroundBtn {
+    display: none;
+}
+
+/* Styles for tablets and larger screens - show elements */
+@media (min-width: 768px) {
+    #dailyTipWidget,
+    .weather-widget,
+    #chatbotContainer,
+    #notesWidget,
+    #changeBackgroundBtn {
+        display: block;
+    }
+}

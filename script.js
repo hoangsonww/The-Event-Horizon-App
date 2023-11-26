@@ -314,6 +314,7 @@ changeBackgroundBtn.textContent = "Change Background";
 changeBackgroundBtn.style.position = "fixed";
 changeBackgroundBtn.style.bottom = "10px";
 changeBackgroundBtn.style.left = "10px";
+changeBackgroundBtn.id = "changeBackgroundBtn";
 changeBackgroundBtn.onclick = function() {
     setRandomBackgroundImage();
     displayRandomQuote();
