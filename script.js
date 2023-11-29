@@ -456,13 +456,13 @@ const eventTips = [
     // And many more...
 ];
 
-function displayDailyTip() {
-    const dailyTipElement = document.getElementById('dailyTip');
-    const randomIndex = Math.floor(Math.random() * eventTips.length);
-    dailyTipElement.textContent = eventTips[randomIndex];
-}
+// function displayDailyTip() {
+//     const dailyTipElement = document.getElementById('dailyTip');
+//     const randomIndex = Math.floor(Math.random() * eventTips.length);
+//     dailyTipElement.textContent = eventTips[randomIndex];
+// }
 
-document.addEventListener('DOMContentLoaded', displayDailyTip);
+// document.addEventListener('DOMContentLoaded', displayDailyTip);
 
 function toggleChatbot() {
     const chatbotBody = document.getElementById('chatbotBody');
