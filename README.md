@@ -15,6 +15,8 @@ The EventHorizon App is a countdown timer application designed to help users ant
 6. **Responsive Text Color:** Depending on the background, the text color adjusts for better readability.
 7. **Inspiring Quotes:** Displays a random inspiring quote above the event title each time the app is loaded.
 8. **About Page:** Provides more information about the app and its developer, with quick links to the developer's GitHub, LinkedIn, and Gmail.
+9. **Mobile Friendly:** Optimized for mobile devices, so you can use it on the go.
+10. **Editable Custom Events:** Users can edit the name and date of their custom events.
 
 #### How to Use:
 
@@ -22,12 +24,15 @@ The EventHorizon App is a countdown timer application designed to help users ant
 2. **Deleting Custom Events:** Added an event by mistake? No worries, you can easily delete it from the custom events list.
 3. **Check the Countdown:** Once an event is set or selected, the app will display a countdown timer, counting down days, hours, minutes, and seconds to the event.
 4. **Know More:** Click on the 'About' button at the bottom to learn more about the app and the developer.
+5. **Edit Custom Events:** Click on the 'Edit' button at the bottom to edit the name and date of your custom events.
 
 #### Setup:
 
 1. **Clone the Repository:** Use `git clone https://github.com/hoangsonww/EventHorizon.git` to clone the repository.
 2. **Open in Browser:** Navigate to the project directory and open the `index.html` in your favorite browser.
 3. **Contribute:** Feel free to fork the repo and make your own changes. Pull requests are welcome!
+4. **Report Issues:** If you find any bugs or issues, please report them [here](
+5. **Contact:** For feedback, collaboration, or inquiries, reach out through [GitHub](https://github.com/hoangsonww), [LinkedIn](https://www.linkedin.com/in/hoangsonw/), or [Gmail](mailto:hoangson091104@gmail.com).
 
 #### Credits:
 

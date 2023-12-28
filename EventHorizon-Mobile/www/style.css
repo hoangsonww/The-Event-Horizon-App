@@ -1,0 +1,540 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap");
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+header {
+    width: 100%;
+    background: linear-gradient(90deg, rgba(62,20,20,0.9) 0%, rgba(9,9,121,0.7) 100%);
+    color: white;
+    padding: 0.75rem;
+    text-align: center;
+    font-size: 2.2rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+body {
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    color: black;
+}
+
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+#shareModal {
+    border-radius: 8px;
+    text-align: center;
+}
+
+.share-buttons a {
+    display: inline-block;
+    margin: 5px;
+    padding: 10px 20px;
+    color: #fff;
+    background-color: #555;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.share-buttons a:hover {
+    opacity: 0.8;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.reminder-setup {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.reminder-setup label,
+.reminder-setup input,
+.reminder-setup button {
+    margin-bottom: 0.5rem;
+}
+
+.notes-widget {
+    position: fixed;
+    bottom: 60px;
+    left: 10px;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.notes-widget textarea {
+    width: 250px;
+    height: 100px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    resize: none;
+}
+
+.notes-widget button {
+    display: block;
+    width: 100%;
+    padding: 5px 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.notes-widget button:hover {
+    background-color: #45a049;
+}
+
+h1 {
+    font-weight: normal;
+    font-size: 4rem;
+    margin-top: -1rem;
+}
+
+.countdown-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background: none;
+    margin-top: 10px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.big-text {
+    font-weight: bold;
+    font-size: 6rem;
+    line-height: 1;
+    margin: 1rem 2rem;
+}
+
+.countdown-el {
+    text-align: center;
+}
+
+.countdown-el span {
+    font-size: 1.3rem;
+}
+
+.event-header {
+    margin-top: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.event-selector {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.event-selector label {
+    margin-bottom: .5rem;
+}
+
+.event-selector select {
+    width: auto;
+    max-width: 100%;
+    display: inline-block;
+}
+
+.event-selector select,
+.event-selector input[type="text"],
+.event-selector input[type="date"] {
+    width: 80%;
+    padding: .5rem;
+    margin-bottom: 1rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    outline: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.notes-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding: 5px 10px;
+    background: linear-gradient(90deg, #53341C 0%, #a85432 100%);
+    color: white;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.weather-widget {
+    position: absolute;
+    top: 70px; /* Adjusted to vertically center */
+    right: 10px;
+    transform: translateY(-50%); /* Adjusted for vertical centering */
+    text-align: right;
+    font-size: 0.8rem; /* Smaller font size */
+}
+
+#weatherLocation {
+    margin-right: 5px;
+    padding: 3px; /* Smaller padding */
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    font-size: 0.8rem; /* Smaller font size */
+}
+
+#weatherDisplay p {
+    margin: 2px 0; /* Less margin for a tighter fit */
+}
+
+.notes-title {
+    background: none;
+}
+
+.notes-content {
+    display: none; /* Start with the content hidden */
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 10px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+#toggleNotesButton {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    width: 10px;
+    margin-top: -5px;
+    margin-bottom: -2px;
+}
+
+#toggleNotesButton:hover {
+    opacity: 0.8;
+}
+
+.event-selector button {
+    margin-top: 0;
+}
+
+#date-warning {
+    margin: 1rem 0;
+    padding: .5rem;
+    background-color: transparent;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    width: 80%;
+    text-align: center;
+    display: none;
+}
+
+#date-warning.warning-active {
+    background-color: rgba(255,0,0,0.1);
+    border: 1px solid red;
+    display: block;
+}
+
+button {
+    font-size: 1rem;
+    padding: 0.7rem 1.5rem;
+    margin-top: 2rem;
+    cursor: pointer;
+    border: none;
+    background: linear-gradient(90deg, #53341C 0%, #a85432 100%);
+    color: white;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background: linear-gradient(90deg, #40261a 0%, #88431e 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 7px 20px rgba(0, 0, 0, 0.2);
+}
+
+button:active {
+    transform: translateY(0);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+a {
+    font-size: 1rem;
+    padding: 0.7rem 1.5rem;
+    margin-top: 2rem;
+    cursor: pointer;
+    border: none;
+    background: linear-gradient(90deg, #53341C 0%, #a85432 100%);
+    color: white;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    background: linear-gradient(90deg, #40261a 0%, #88431e 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 7px 20px rgba(0, 0, 0, 0.2);
+}
+
+a:active {
+    transform: translateY(0);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+#custom-events-list {
+    margin-top: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 10px;
+    width: 80%;
+    text-align: center;
+    color: black;
+}
+
+#custom-events-list h3 {
+    margin-bottom: 1rem;
+}
+
+#custom-events-list ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+#custom-events-list li span {
+    flex-grow: 1;
+    cursor: pointer;
+}
+
+#custom-events-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#custom-events-list button {
+    margin-left: 1rem;
+    padding: 0.2rem 0.5rem;
+    font-size: 0.8rem;
+    background: #ff4b4b;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: -7px;
+}
+
+#custom-events-list li:hover {
+    opacity: 0.7;
+}
+
+#inspirational-quote {
+    font-size: 1.5rem;
+    font-style: italic;
+    text-align: center;
+    margin-top: 2rem;
+    color: #000000;
+    padding: 0 1rem;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin: 2rem 0;
+}
+
+.social-button {
+    font-size: 1rem;
+    padding: 0.7rem 1.5rem;
+    cursor: pointer;
+    border: none;
+    background: linear-gradient(90deg, #53341C 0%, #a85432 100%);
+    color: white;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    text-decoration: none; /* Remove underline from links */
+}
+
+.social-button:hover {
+    background: linear-gradient(90deg, #40261a 0%, #88431e 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 7px 20px rgba(0, 0, 0, 0.2);
+}
+
+.social-button:active {
+    transform: translateY(0);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+#chatbotContainer {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    width: 300px;
+    max-height: 400px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(90deg, #53341C 0%, #a85432 100%);
+    overflow: hidden;
+    font-family: "Poppins", sans-serif;
+}
+
+#chatbotHeader {
+    background: linear-gradient(90deg, #53341C 0%, #a85432 100%);
+    color: white;
+    text-align: center;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    font-weight: 600;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 10px;
+}
+
+#chatbotHeader span {
+    float: left;
+}
+
+#chatbotBody {
+    overflow-y: auto;
+    max-height: 300px;
+    padding: 10px;
+    background: linear-gradient(90deg, #53341C 0%, #a85432 100%);
+    color: white;
+}
+
+#chatbotInput {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    color: white;
+    background: linear-gradient(90deg, #53341C 0%, #a85432 100%);
+    outline: none;
+    box-shadow: none;
+}
+
+#chatbotBody .message {
+    padding: 5px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: #e0e0e0;
+    color: white;
+}
+
+#minimizeChatbot {
+    border: none;
+    background: none;
+    color: white;
+    cursor: pointer;
+    margin-right: -10px;
+    height: 30px;
+    margin-top: -1px;
+    width: 50px;
+    font-size: 1.2em;
+    line-height: 0.6; /* Reduce line height to raise the "-" */
+    vertical-align: middle; /* Align vertically */
+    padding: 0 5px; /* Add some padding for better aesthetics */
+}
+
+#chatbotBody .message.user {
+    background: linear-gradient(90deg, #53341C 0%, #a85432 100%);
+    color: white;
+    align-self: flex-end;
+}
+
+.daily-tip-widget {
+    position: absolute;
+    top: 15px;
+    left: 10px;
+    font-size: 0.75rem;
+    color: white;
+}
+
+#dailyTip {
+    margin: 0;
+    padding: 5px;
+}
+
+/* Default styles for mobile - hide elements */
+#dailyTipWidget,
+.weather-widget,
+#chatbotContainer,
+#notesWidget,
+#changeBackgroundBtn {
+    display: none;
+}
+
+/* Styles for tablets and larger screens - show elements */
+@media (min-width: 768px) {
+    #dailyTipWidget,
+    .weather-widget,
+    #chatbotContainer,
+    #notesWidget,
+    #changeBackgroundBtn {
+        display: block;
+    }
+}
