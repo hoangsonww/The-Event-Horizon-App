@@ -66,6 +66,10 @@ body {
     text-align: center;
 }
 
+.additional-apps-section {
+    text-align: center;
+}
+
 .share-buttons a {
     display: inline-block;
     margin: 5px;

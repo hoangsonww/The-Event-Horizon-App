@@ -206,10 +206,6 @@ function displayCustomEvents() {
     });
 }
 
-function navigateToAboutPage() {
-    window.location.href = "about.html";
-}
-
 function formatTime(time) {
     return time < 10 ? `0${time}` : time;
 }
