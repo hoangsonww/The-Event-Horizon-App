@@ -15,6 +15,9 @@
     <meta name="author" content="Son Nguyen Hoang">
     <link rel="canonical" href="https://hoangsonww.github.io/The-Event-Horizon-App/">
     <meta name="robots" content="index, follow">
+    <meta name="description" content="The EventHorizon App is an intuitive event countdown tool, perfect for tracking important dates and occasions in your life.">
+    <meta name="rating" content="general" />
+    <meta name="rights" content="&copy; 2023 Son Nguyen Hoang" />
     <meta name="rating" content="General">
     <meta name="revisit-after" content="3 days">
     <meta name="twitter:card" content="./images/eventhorizon-logo.png">
@@ -82,21 +85,23 @@
         <p id="date-warning" style="color:red;"></p>
     </div>
 
-    <!-- Button to Open Modal -->
     <button id="editEventButton">Edit Event</button>
 
-    <!-- Modal -->
     <div id="editEventModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeEditModal()">&times;</span>
-            <h2>Edit Event</h2>
-            <label for="newEventName">Event Name:</label>
-            <input type="text" id="newEventName" placeholder="Enter new event name">
-
-            <label for="newEventDate">Event Date:</label>
-            <input type="datetime-local" id="newEventDate">
-
-            <button onclick="updateEventDetails()">Update Event</button>
+            <h2 style="margin-top: 5px">Edit Event</h2>
+            <div style="text-align: center; margin-bottom: 10px">
+                <label for="newEventName">Event Name:</label>
+                <input type="text" id="newEventName" placeholder="Enter new event name">
+            </div>
+            <div style="text-align: center">
+                <label for="newEventDate">Event Date:</label>
+                <input type="datetime-local" id="newEventDate">
+            </div>
+            <div style="text-align: center">
+                <button onclick="updateEventDetails()">Update Event</button>
+            </div>
         </div>
     </div>
 

@@ -329,7 +329,7 @@ function setReminder() {
     reminderTime.setHours(reminderTime.getHours() - reminderHours);
 
     localStorage.setItem('eventReminder', JSON.stringify({ date: reminderTime, eventName: eventTitle.textContent }));
-    alert(`Reminder set for ${eventTitle.textContent} ${reminderHours} hours before the event.`);
+    alert(`Reminder set for ${eventTitle.textContent} ${reminderHours} hours before the event. You will be notified ${reminderHours} hours before the event.`);
 }
 
 function checkForReminders() {

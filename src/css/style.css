@@ -177,10 +177,13 @@ h1 {
     margin-top: 0.5rem;
     display: flex;
     flex-direction: column;
+    text-align: center;
     align-items: center;
+    overflow: auto;
     background: rgba(255, 255, 255, 0.1);
     padding: 1rem;
     border-radius: 10px;
+    max-width: 100%;
 }
 
 .event-selector {
@@ -523,7 +526,6 @@ a:active {
     padding: 5px;
 }
 
-/* Default styles for mobile - hide elements */
 #dailyTipWidget,
 .weather-widget,
 #chatbotContainer,
@@ -532,7 +534,6 @@ a:active {
     display: none;
 }
 
-/* Styles for tablets and larger screens - show elements */
 @media (min-width: 768px) {
     #dailyTipWidget,
     .weather-widget,
