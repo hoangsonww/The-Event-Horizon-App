@@ -25,6 +25,8 @@
     <meta name="twitter:description" content="The EventHorizon App is an intuitive event countdown tool, perfect for tracking important dates and occasions in your life.">
     <meta name="twitter:image" content="./images/eventhorizon-logo.png">
     <meta name="referrer" content="no-referrer-when-downgrade">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="manifest" href="manifest.json">
     <title>The EventHorizon App</title>
     <link rel="stylesheet" href="src/css/style.css" />
     <script src="src/js/script.js" defer></script>
@@ -39,8 +41,8 @@
         </div>
         <div class="weather-widget" style="text-align: center">
             <h4 style="margin-bottom: -10px">View weather at your location</h4>
-            <input type="text" id="weatherLocation" style="margin-bottom: 10px" placeholder="Enter location">
-            <button onclick="fetchWeather()" style="margin-bottom: 10px; width: 147px; margin-right: -5px">View Weather</button>
+            <input type="text" id="weatherLocation" style="margin-bottom: 10px; font: inherit" placeholder="Enter location">
+            <button onclick="fetchWeather()" style="margin-bottom: 10px; width: 147px; margin-right: -5px; font: inherit">View Weather</button>
             <div id="weatherDisplay"></div>
         </div>
     </header>
@@ -81,11 +83,11 @@
         <input type="text" id="custom-event-name">
         <label for="custom-event">Event date: </label>
         <input type="date" id="custom-event">
-        <button onclick="updateEvent()">Set Event</button>
+        <button style="font: inherit" onclick="updateEvent()">Set Event</button>
         <p id="date-warning" style="color:red;"></p>
     </div>
 
-    <button id="editEventButton">Edit Event</button>
+    <button style="font: inherit" id="editEventButton">Edit Event</button>
 
     <div id="editEventModal" class="modal">
         <div class="modal-content">
@@ -105,7 +107,7 @@
         </div>
     </div>
 
-    <button id="shareEventButton" onclick="shareEvent()">Share Event</button>
+    <button id="shareEventButton" style="font: inherit" onclick="shareEvent()">Share Event</button>
 
     <div id="shareModal" class="modal">
         <div class="modal-content" style="border-radius: 8px">
@@ -125,7 +127,7 @@
     <div class="reminder-setup">
         <h3>Set a reminder:</h3>
         <input type="number" id="reminder-time" min="0" placeholder="Hours before event">
-        <button onclick="setReminder()">Set Reminder</button>
+        <button style="font: inherit" onclick="setReminder()">Set Reminder</button>
     </div>
 
     <div id="custom-events-list">
@@ -135,12 +137,12 @@
 
     <div id="notesWidget" class="notes-widget">
         <div id="notesHeader" class="notes-header">
-            <span id="notesTitle">Add an Event Note</span>
-            <button id="toggleNotesButton" onclick="toggleNotes()" title="Maximize/Minimize Notes" style="box-shadow: none">−</button>
+            <span id="notesTitle">Add an Quick Note</span>
+            <button id="toggleNotesButton" onclick="toggleNotes()" title="Maximize/Minimize Notes" style="box-shadow: none">+</button>
         </div>
         <div id="notesContent" class="notes-content">
             <textarea id="eventNotes" placeholder="Quick notes about your event..."></textarea>
-            <button onclick="saveNotes()">Save Notes</button>
+            <button style="font: inherit" onclick="saveNotes()">Save Notes</button>
         </div>
     </div>
 
@@ -150,10 +152,10 @@
             <button id="minimizeChatbot" onclick="toggleChatbot()" title="Maximize/Minimize Chatbot">-</button>
         </div>
         <div id="chatbotBody"></div>
-        <input id="chatbotInput" type="text" style="color: white" placeholder="Ask me anything...">
+        <input id="chatbotInput" type="text" style="color: white; font: inherit" placeholder="Ask me anything...">
     </div>
 
-    <button onclick="window.location.href='src/html/about.html'" style="margin-bottom: 10px">About</button>
+    <button onclick="window.location.href='src/html/about.html'" style="margin-bottom: 10px; font: inherit">About</button>
 
 </body>
 

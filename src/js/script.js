@@ -193,6 +193,8 @@ function displayCustomEvents() {
 
         const deleteBtn = document.createElement('button');
         deleteBtn.textContent = 'Delete';
+        deleteBtn.style.font = 'inherit';
+        deleteBtn.style.fontSize = '11px';
         deleteBtn.addEventListener('click', function(e) {
             e.stopPropagation();
             customEvents.splice(index, 1);
@@ -309,6 +311,7 @@ changeBackgroundBtn.textContent = "Change Background";
 changeBackgroundBtn.style.position = "fixed";
 changeBackgroundBtn.style.bottom = "10px";
 changeBackgroundBtn.style.left = "10px";
+changeBackgroundBtn.style.font = "inherit";
 changeBackgroundBtn.id = "changeBackgroundBtn";
 changeBackgroundBtn.onclick = function() {
     setRandomBackgroundImage();
