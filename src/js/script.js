@@ -85,8 +85,8 @@ function updateEvent() {
     const customEvents = JSON.parse(localStorage.getItem('customEvents')) || [];
 
     if (customEvents.length === 0) {
-        eventTitle.textContent = "New Year 2024";
-        currentEventDate = "1 Jan 2024";
+        eventTitle.textContent = "New Year 2025";
+        currentEventDate = "1 Jan 2025";
     }
 
     localStorage.setItem('lastEvent', JSON.stringify(eventToSave));
@@ -103,7 +103,7 @@ eventDropdown.addEventListener("change", function() {
             setEvent("New Year", new Date(`1 Jan ${currentYear + 1}`));
             break;
         case "10 Feb":
-            setEvent("Lunar New Year", new Date(`10 Feb ${currentYear + 1}`));
+            setEvent("Lunar New Year", new Date(`10 Feb ${currentYear}`));
             break;
         case "9 Nov":
             setEvent("My Birthday", new Date(`9 Nov ${currentYear}`));
@@ -133,8 +133,8 @@ document.addEventListener('DOMContentLoaded', function() {
         currentEventDate = lastEvent.date;
     }
     else {
-        eventTitle.textContent = "New Year 2024";
-        currentEventDate = "1 Jan 2024";
+        eventTitle.textContent = "New Year 2025";
+        currentEventDate = "1 Jan 2025";
     }
     countdown();
     displayCustomEvents();

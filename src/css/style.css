@@ -6,6 +6,7 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 header {
@@ -29,6 +30,7 @@ body {
     min-height: 100vh;
     font-family: "Poppins", sans-serif;
     margin: 0;
+    overflow-x: hidden;
 }
 
 .modal {
