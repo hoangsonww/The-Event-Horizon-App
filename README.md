@@ -26,6 +26,21 @@ The EventHorizon App is a countdown timer application designed to help users ant
 4. **Know More:** Click on the 'About' button at the bottom to learn more about the app and the developer.
 5. **Edit Custom Events:** Click on the 'Edit' button at the bottom to edit the name and date of your custom events.
 
+#### Technologies Used:
+
+1. **HTML5:** For the structure and layout of the app.
+2. **CSS3:** For the styling and design of the app.
+3. **JavaScript:** For the functionality and interactivity of the app.
+4. **Vue.js:** For the dynamic rendering of the app and the reactivity of the data.
+5. **Local Storage:** To store the last event viewed and the custom events added by the user.
+6. **Unsplash API:** To fetch random background images for the app.
+7. **Quotes API:** To fetch random inspiring quotes for the app.
+8. **GitHub Pages:** To host the app and make it accessible to everyone.
+9. **Babel:** To transpile the JavaScript code for compatibility with older browsers.
+10. **ESLint:** To maintain a consistent code style and quality.
+11. **Prettier:** To format the code for better readability and maintainability.
+12. **Docker:** To containerize the app for easy deployment and scaling.
+
 #### Setup:
 
 1. **Clone the Repository:** Use `git clone https://github.com/hoangsonww/EventHorizon.git` to clone the repository.
