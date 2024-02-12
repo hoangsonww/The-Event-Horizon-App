@@ -103,7 +103,7 @@ eventDropdown.addEventListener("change", function() {
             setEvent("New Year", new Date(`1 Jan ${currentYear + 1}`));
             break;
         case "10 Feb":
-            setEvent("Lunar New Year", new Date(`10 Feb ${currentYear}`));
+            setEvent("Lunar New Year", new Date(`10 Feb ${currentYear + 1}`));
             break;
         case "9 Nov":
             setEvent("My Birthday", new Date(`9 Nov ${currentYear}`));
@@ -454,7 +454,7 @@ function isPredefinedEvent(eventName) {
 
 function openEditModal() {
     if (isPredefinedEvent(eventTitle.textContent)) {
-        alert("Events like New Year or Lunar New Year cannot be edited.");
+        alert("Predefined events like New Year or Lunar New Year cannot be edited.");
         return;
     }
 
