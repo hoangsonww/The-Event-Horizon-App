@@ -82,8 +82,8 @@
     </div>
 
     <div class="event-selector">
-        <label for="event-dropdown">Choose an event: </label>
-        <select id="event-dropdown">
+        <label for="event-dropdown" style="font: inherit">Choose an event: </label>
+        <select id="event-dropdown" style="font: inherit">
             <option value="1 Jan">New Year</option>
             <option value="10 Feb">Lunar New Year</option>
             <option value="9 Nov">My Birthday</option>
@@ -92,7 +92,7 @@
         <label for="custom-event-name">Event name: </label>
         <input type="text" id="custom-event-name">
         <label for="custom-event">Event date: </label>
-        <input type="date" id="custom-event">
+        <input type="date" id="custom-event" style="font: inherit">
         <button style="font: inherit" onclick="updateEvent()">Set Event</button>
         <p id="date-warning" style="color:red;"></p>
     </div>
@@ -136,7 +136,7 @@
 
     <div class="reminder-setup">
         <h3>Set a reminder:</h3>
-        <input type="number" id="reminder-time" min="0" placeholder="Hours before event">
+        <input type="number" id="reminder-time" min="0" style="border-radius: 8px; height: 28px; border: none; padding-left: 8px; font: inherit" placeholder="Hours before event">
         <button style="font: inherit" onclick="setReminder()">Set Reminder</button>
     </div>
 
