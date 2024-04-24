@@ -41,7 +41,7 @@ function setRandomBackgroundImage() {
     const randomIndex = Math.floor(Math.random() * bgImages.length);
     const chosenImage = bgImages[randomIndex];
     document.body.style.backgroundImage = chosenImage.url;
-    const textColor = chosenImage.isDark ? "white" : "black";
+    const textColor = chosenImage.isDark ? "black" : "black";
 
     document.getElementById('inspirational-quote').style.color = textColor;
     document.getElementById('event-title').style.color = textColor;

@@ -82,13 +82,14 @@
     </div>
 
     <div class="event-selector">
-        <label for="event-dropdown" style="font: inherit">Choose an event: </label>
+        <label for="event-dropdown" style="font: inherit"><strong>Choose an event: </strong></label>
         <select id="event-dropdown" style="font: inherit">
             <option value="1 Jan">New Year</option>
             <option value="10 Feb">Lunar New Year</option>
             <option value="9 Nov">My Birthday</option>
         </select>
-        <label for="custom-event-name">OR Create a New Event:</label>
+        <p><strong>OR</strong></p>
+        <label for="custom-event-name"><strong>Create a New Event:</strong></label>
         <label for="custom-event-name">Event name: </label>
         <input type="text" id="custom-event-name">
         <label for="custom-event">Event date: </label>
@@ -151,7 +152,7 @@
             <button id="toggleNotesButton" onclick="toggleNotes()" title="Maximize/Minimize Notes" style="box-shadow: none">+</button>
         </div>
         <div id="notesContent" class="notes-content">
-            <textarea id="eventNotes" placeholder="Quick notes about your event..."></textarea>
+            <textarea id="eventNotes" placeholder="Quick notes about your event..." style="font: inherit; font-size: 14px"></textarea>
             <button style="font: inherit" onclick="saveNotes()">Save Notes</button>
         </div>
     </div>
