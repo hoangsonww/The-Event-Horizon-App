@@ -23,12 +23,12 @@ const quotes = [
 ];
 
 const bgImages = [
-    {url: 'url("snow.jpg")', isDark: false}, // Mostly white
-    {url: 'url("R.jfif")', isDark: true},      // Mostly dark
-    {url: 'url("R (1).jfif")', isDark: false},  // Mostly dark
-    {url: 'url("j1O8bCz.jpg")', isDark: true}, // Mostly dark
-    {url: 'url("wp4670197.jpg")', isDark: true}, // Mostly dark
-    {url: 'url("wp4511352.jpg")', isDark: true}  // Mostly dark
+    {url: 'url("./images/snow.jpg")', isDark: false}, // Mostly white
+    {url: 'url("./images/R.jfif")', isDark: true},      // Mostly dark
+    {url: 'url("./images/R (1).jfif")', isDark: false},  // Mostly dark
+    {url: 'url("./images/j1O8bCz.jpg")', isDark: true}, // Mostly dark
+    {url: 'url("./images/wp4670197.jpg")', isDark: true}, // Mostly dark
+    {url: 'url("./images/wp4511352.jpg")', isDark: true}  // Mostly dark
 ];
 
 function displayRandomQuote() {
@@ -41,7 +41,7 @@ function setRandomBackgroundImage() {
     const randomIndex = Math.floor(Math.random() * bgImages.length);
     const chosenImage = bgImages[randomIndex];
     document.body.style.backgroundImage = chosenImage.url;
-    const textColor = chosenImage.isDark ? "white" : "black";
+    const textColor = chosenImage.isDark ? "black" : "black";
 
     document.getElementById('inspirational-quote').style.color = textColor;
     document.getElementById('event-title').style.color = textColor;
@@ -85,8 +85,8 @@ function updateEvent() {
     const customEvents = JSON.parse(localStorage.getItem('customEvents')) || [];
 
     if (customEvents.length === 0) {
-        eventTitle.textContent = "New Year 2024";
-        currentEventDate = "1 Jan 2024";
+        eventTitle.textContent = "New Year 2025";
+        currentEventDate = "1 Jan 2025";
     }
 
     localStorage.setItem('lastEvent', JSON.stringify(eventToSave));
@@ -133,8 +133,8 @@ document.addEventListener('DOMContentLoaded', function() {
         currentEventDate = lastEvent.date;
     }
     else {
-        eventTitle.textContent = "New Year 2024";
-        currentEventDate = "1 Jan 2024";
+        eventTitle.textContent = "New Year 2025";
+        currentEventDate = "1 Jan 2025";
     }
     countdown();
     displayCustomEvents();
@@ -193,6 +193,8 @@ function displayCustomEvents() {
 
         const deleteBtn = document.createElement('button');
         deleteBtn.textContent = 'Delete';
+        deleteBtn.style.font = 'inherit';
+        deleteBtn.style.fontSize = '11px';
         deleteBtn.addEventListener('click', function(e) {
             e.stopPropagation();
             customEvents.splice(index, 1);
@@ -204,10 +206,6 @@ function displayCustomEvents() {
         li.appendChild(deleteBtn);
         ul.appendChild(li);
     });
-}
-
-function navigateToAboutPage() {
-    window.location.href = "about.html";
 }
 
 function formatTime(time) {
@@ -313,6 +311,7 @@ changeBackgroundBtn.textContent = "Change Background";
 changeBackgroundBtn.style.position = "fixed";
 changeBackgroundBtn.style.bottom = "10px";
 changeBackgroundBtn.style.left = "10px";
+changeBackgroundBtn.style.font = "inherit";
 changeBackgroundBtn.id = "changeBackgroundBtn";
 changeBackgroundBtn.onclick = function() {
     setRandomBackgroundImage();
@@ -333,7 +332,7 @@ function setReminder() {
     reminderTime.setHours(reminderTime.getHours() - reminderHours);
 
     localStorage.setItem('eventReminder', JSON.stringify({ date: reminderTime, eventName: eventTitle.textContent }));
-    alert(`Reminder set for ${eventTitle.textContent} ${reminderHours} hours before the event.`);
+    alert(`Reminder set for ${eventTitle.textContent} ${reminderHours} hours before the event. You will be notified ${reminderHours} hours before the event.`);
 }
 
 function checkForReminders() {
@@ -455,7 +454,7 @@ function isPredefinedEvent(eventName) {
 
 function openEditModal() {
     if (isPredefinedEvent(eventTitle.textContent)) {
-        alert("Events like New Year or Lunar New Year cannot be edited.");
+        alert("Predefined events like New Year or Lunar New Year cannot be edited.");
         return;
     }
 

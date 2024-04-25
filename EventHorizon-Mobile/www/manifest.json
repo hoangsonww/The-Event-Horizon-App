@@ -1,0 +1,26 @@
+{
+  "name": "The EventHorizon App",
+  "short_name": "EventHorizon",
+  "description": "The EventHorizon App is an intuitive event countdown tool, perfect for tracking important dates and occasions in your life.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "images/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "images/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "orientation": "portrait",
+  "lang": "en-US",
+  "scope": "/",
+  "dir": "ltr",
+  "prefer_related_applications": false
+}

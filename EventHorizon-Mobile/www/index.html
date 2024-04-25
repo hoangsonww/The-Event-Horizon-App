@@ -6,38 +6,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="website" />
-    <meta property="og:description" content="Explore The MovieVerse to discover and learn about your favorite movies, directors, actors, and more." />
+    <meta property="og:description" content="The EventHorizon App is an intuitive event countdown tool, perfect for tracking important dates and occasions in your life." />
     <meta property="og:url" content="https://hoangsonww.github.io/The-Event-Horizon-App/" />
-    <meta property="og:site_name" content="The MovieVerse" />
-    <meta property="og:image" content="./images/logo.png" />
+    <meta property="og:site_name" content="The EventHorizon App" />
+    <meta property="og:image" content="./images/eventhorizon-logo.png" />
     <meta property="og:favicon" content="./images/favicon.ico" />
-    <meta name="keywords" content="movies, film guide, directors, actors, movie genres, cinema, film reviews">
+    <meta name="keywords" content="event countdown, important dates, event tracker, date countdown, personal organizer">
     <meta name="author" content="Son Nguyen Hoang">
-    <link rel="canonical" href="https://hoangsonww.github.io/My-Portfolio-Website/">
+    <link rel="canonical" href="https://hoangsonww.github.io/The-Event-Horizon-App/">
     <meta name="robots" content="index, follow">
+    <meta name="description" content="The EventHorizon App is an intuitive event countdown tool, perfect for tracking important dates and occasions in your life.">
+    <meta name="rating" content="general" />
+    <meta name="rights" content="&copy; 2023 Son Nguyen Hoang" />
     <meta name="rating" content="General">
     <meta name="revisit-after" content="3 days">
-    <meta name="twitter:card" content="./images/logo.png">
-    <meta name="twitter:title" content="The MovieVerse - Your Ultimate Movie Guide">
-    <meta name="twitter:description" content="Explore The MovieVerse to discover and learn about your favorite movies, directors, actors, and more.">
-    <meta name="twitter:image" content="./images/logo.png">
+    <meta name="twitter:card" content="./images/eventhorizon-logo.png">
+    <meta name="twitter:title" content="The EventHorizon App - Track Your Important Dates">
+    <meta name="twitter:description" content="The EventHorizon App is an intuitive event countdown tool, perfect for tracking important dates and occasions in your life.">
+    <meta name="twitter:image" content="./images/eventhorizon-logo.png">
     <meta name="referrer" content="no-referrer-when-downgrade">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="manifest" href="manifest.json">
     <title>The EventHorizon App</title>
-    <link rel="stylesheet" href="style.css" />
-    <script src="script.js" defer></script>
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="src/css/style.css" />
+    <script src="src/js/script.js" defer></script>
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9NPSN4RVS4"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-9NPSN4RVS4');
+    </script>
 </head>
 
 <body>
 
     <header>
         <div class="header-content">
-            <h2>The Event Horizon App</h2>
+            <h2>The EventHorizon App</h2>
+            <p style="font-size: 18px">Track Your Important Dates and Plan Your Events Effectively</p>
         </div>
         <div class="weather-widget" style="text-align: center">
-            <h4 style="margin-bottom: -10px">View weather at your location</h4>
-            <input type="text" id="weatherLocation" style="margin-bottom: 10px" placeholder="Enter location">
-            <button onclick="fetchWeather()" style="margin-bottom: 10px; width: 147px; margin-right: -5px">View Weather</button>
+            <h4 style="margin-top: 10px; margin-bottom: -10px">View weather at your location</h4>
+            <input type="text" id="weatherLocation" style="margin-bottom: 10px; font: inherit" placeholder="Enter location">
+            <button onclick="fetchWeather()" style="margin-bottom: 10px; width: 147px; margin-right: -5px; font: inherit">View Weather</button>
             <div id="weatherDisplay"></div>
         </div>
     </header>
@@ -67,40 +82,43 @@
     </div>
 
     <div class="event-selector">
-        <label for="event-dropdown">Choose an event: </label>
-        <select id="event-dropdown">
+        <label for="event-dropdown" style="font: inherit"><strong>Choose an event: </strong></label>
+        <select id="event-dropdown" style="font: inherit">
             <option value="1 Jan">New Year</option>
             <option value="10 Feb">Lunar New Year</option>
             <option value="9 Nov">My Birthday</option>
         </select>
-        <label for="custom-event-name">OR Create a New Event:</label>
+        <p><strong>OR</strong></p>
+        <label for="custom-event-name"><strong>Create a New Event:</strong></label>
         <label for="custom-event-name">Event name: </label>
         <input type="text" id="custom-event-name">
         <label for="custom-event">Event date: </label>
-        <input type="date" id="custom-event">
-        <button onclick="updateEvent()">Set Event</button>
+        <input type="date" id="custom-event" style="font: inherit">
+        <button style="font: inherit" onclick="updateEvent()">Set Event</button>
         <p id="date-warning" style="color:red;"></p>
     </div>
 
-    <!-- Button to Open Modal -->
-    <button id="editEventButton">Edit Event</button>
+    <button style="font: inherit" id="editEventButton">Edit Event</button>
 
-    <!-- Modal -->
     <div id="editEventModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeEditModal()">&times;</span>
-            <h2>Edit Event</h2>
-            <label for="newEventName">Event Name:</label>
-            <input type="text" id="newEventName" placeholder="Enter new event name">
-
-            <label for="newEventDate">Event Date:</label>
-            <input type="datetime-local" id="newEventDate">
-
-            <button onclick="updateEventDetails()">Update Event</button>
+            <h2 style="margin-top: 5px">Edit Event</h2>
+            <div style="text-align: center; margin-bottom: 10px">
+                <label for="newEventName">Event Name:</label>
+                <input type="text" id="newEventName" placeholder="Enter new event name">
+            </div>
+            <div style="text-align: center">
+                <label for="newEventDate">Event Date:</label>
+                <input type="datetime-local" id="newEventDate">
+            </div>
+            <div style="text-align: center">
+                <button onclick="updateEventDetails()">Update Event</button>
+            </div>
         </div>
     </div>
 
-    <button id="shareEventButton" onclick="shareEvent()">Share Event</button>
+    <button id="shareEventButton" style="font: inherit" onclick="shareEvent()">Share Event</button>
 
     <div id="shareModal" class="modal">
         <div class="modal-content" style="border-radius: 8px">
@@ -119,8 +137,8 @@
 
     <div class="reminder-setup">
         <h3>Set a reminder:</h3>
-        <input type="number" id="reminder-time" min="0" placeholder="Hours before event">
-        <button onclick="setReminder()">Set Reminder</button>
+        <input type="number" id="reminder-time" min="0" style="border-radius: 8px; height: 28px; border: none; padding-left: 8px; font: inherit" placeholder="Hours before event">
+        <button style="font: inherit" onclick="setReminder()">Set Reminder</button>
     </div>
 
     <div id="custom-events-list">
@@ -130,12 +148,12 @@
 
     <div id="notesWidget" class="notes-widget">
         <div id="notesHeader" class="notes-header">
-            <span id="notesTitle">Add an Event Note</span>
-            <button id="toggleNotesButton" onclick="toggleNotes()" title="Maximize/Minimize Notes" style="box-shadow: none">−</button>
+            <span id="notesTitle">Add an Quick Note</span>
+            <button id="toggleNotesButton" onclick="toggleNotes()" title="Maximize/Minimize Notes" style="box-shadow: none">+</button>
         </div>
         <div id="notesContent" class="notes-content">
-            <textarea id="eventNotes" placeholder="Quick notes about your event..."></textarea>
-            <button onclick="saveNotes()">Save Notes</button>
+            <textarea id="eventNotes" placeholder="Quick notes about your event..." style="font: inherit; font-size: 14px"></textarea>
+            <button style="font: inherit" onclick="saveNotes()">Save Notes</button>
         </div>
     </div>
 
@@ -145,10 +163,10 @@
             <button id="minimizeChatbot" onclick="toggleChatbot()" title="Maximize/Minimize Chatbot">-</button>
         </div>
         <div id="chatbotBody"></div>
-        <input id="chatbotInput" type="text" style="color: white" placeholder="Ask me anything...">
+        <input id="chatbotInput" type="text" style="color: white; font: inherit" placeholder="Ask me anything...">
     </div>
 
-    <button onclick="navigateToAboutPage()" style="margin-bottom: 10px">About</button>
+    <button onclick="window.location.href='src/html/about.html'" style="margin-bottom: 10px; font: inherit">About</button>
 
 </body>
 
