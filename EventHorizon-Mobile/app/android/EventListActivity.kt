@@ -18,9 +18,4 @@ class EventListActivity : AppCompatActivity() {
         }
         return events
     }
-
-    private fun navigateToEventDetail(eventId: UUID) {
-        val intent = EventDetailActivity.newIntent(this, eventId)
-        startActivity(intent)
-    }
 }

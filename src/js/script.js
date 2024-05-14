@@ -170,7 +170,12 @@ function closeModal() {
 function copyToClipboard() {
     const shareLinkInput = document.getElementById('shareLink');
     shareLinkInput.select();
-    document.execCommand('copy');
+
+    navigator.clipboard.writeText(shareLinkInput.value).then(() => {
+        console.log('Text copied to clipboard');
+    }).catch(err => {
+        console.error('Failed to copy text: ', err);
+    });
 }
 
 function displayCustomEvents() {

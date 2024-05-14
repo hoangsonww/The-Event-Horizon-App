@@ -41,7 +41,7 @@ function setRandomBackgroundImage() {
     const randomIndex = Math.floor(Math.random() * bgImages.length);
     const chosenImage = bgImages[randomIndex];
     document.body.style.backgroundImage = chosenImage.url;
-    const textColor = chosenImage.isDark ? "black" : "black";
+    const textColor = "black";
 
     document.getElementById('inspirational-quote').style.color = textColor;
     document.getElementById('event-title').style.color = textColor;
@@ -170,7 +170,12 @@ function closeModal() {
 function copyToClipboard() {
     const shareLinkInput = document.getElementById('shareLink');
     shareLinkInput.select();
-    document.execCommand('copy');
+
+    navigator.clipboard.writeText(shareLinkInput.value).then(() => {
+        console.log('Text copied to clipboard');
+    }).catch(err => {
+        console.error('Failed to copy text: ', err);
+    });
 }
 
 function displayCustomEvents() {
