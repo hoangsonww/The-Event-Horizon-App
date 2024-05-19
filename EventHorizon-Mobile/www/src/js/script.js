@@ -219,74 +219,145 @@ function formatTime(time) {
 
 function elizaResponse(message) {
     const lowerMessage = message.toLowerCase();
-    if (lowerMessage.includes("hello") || lowerMessage.includes("hi") || lowerMessage.includes("hey")) {
-        return "Hello! How can I help you with your event countdowns today?";
-    } else if (lowerMessage.includes("about")) {
-        return "EventHorizon is an app to help you count down to significant events in your life. You can select from predefined events or set up your custom events.";
-    } else if (lowerMessage.includes("how are you")) {
-        return "I'm just a bot, but I'm here and ready to help!";
-    } else if (lowerMessage.includes("event")) {
-        return "You can create countdowns for different events. If you have a custom event, just specify its name and date!";
-    } else if (lowerMessage.includes("background")) {
-        setRandomBackgroundImage();
-        displayRandomQuote();
-        return "Background and quote updated!";
-    } else if (lowerMessage.includes("quote")) {
-        displayRandomQuote();
-        return "Quote refreshed!";
-    } else if (lowerMessage.includes("thanks") || lowerMessage.includes("thank you")) {
-        return "You're welcome! Let me know if you have more questions.";
-    } else if (lowerMessage.includes("who are you")) {
-        return "I'm the EventHorizon Assistant. I'm here to guide you on using this app and answer any questions you might have.";
-    } else if (lowerMessage.includes("features")) {
-        return "You can set countdowns for different events, choose from predefined ones or create your custom event, change the background, get inspired by a quote, and now you can chat with me for more information!";
-    } else if (lowerMessage.includes("joke")) {
-        return "Why did the calendar factory get shut down? Because it took a day off!";
-    } else if (lowerMessage.includes("countdown")) {
-        return "EventHorizon helps you create countdowns for special events in your life, keeping track of the days, hours, minutes, and seconds until your event!";
-    } else if (lowerMessage.includes("custom event")) {
-        return "You can create a custom event by entering its name and date. Just use the 'Set Event' button!";
-    } else if (lowerMessage.includes("inspiration")) {
-        return "Get inspired! Ask for an inspirational quote, and I'll provide you with some motivational words.";
-    } else if (lowerMessage.includes("help")) {
-        return "I'm here to assist! Feel free to ask about events, backgrounds, quotes, or any questions you have about EventHorizon.";
-    } else if (lowerMessage.includes("bye") || lowerMessage.includes("goodbye")) {
-        return "Farewell! Don't hesitate to return if you have more questions. Happy event-planning!";
-    } else if (lowerMessage.includes("weather")) {
-        return "You can check the weather by entering a city name. I'll tell you the temperature, weather, humidity, and chance of rain.";
-    } else if (lowerMessage.includes("share")) {
-        return "You can share your event with friends by clicking on the 'Share' button. You can share via Facebook, Twitter, or Email.";
-    } else if (lowerMessage.includes("notes")) {
-        return "You can take notes for your event by clicking on the 'Notes' button. You can save your notes and view them later.";
-    } else if (lowerMessage.includes("reminder")) {
-        return "You can set a reminder for your event by entering the number of hours before the event you want to be reminded. I'll let you know when it's time!";
-    } else if (lowerMessage.includes("chatbot")) {
-        return "You can chat with me! Just click on the + button to open the chatbot.";
-    } else if (lowerMessage.includes("edit")) {
-        return "You can edit your event by clicking on the 'Edit Event' button. You can change the event name and date.";
-    } else if (lowerMessage.includes("delete")) {
-        return "You can delete your custom event by clicking on the 'Delete' button next to the event.";
-    } else if (lowerMessage.includes("facebook")) {
-        return "You can share your event on Facebook by clicking on the 'Share on Facebook' button.";
-    } else if (lowerMessage.includes("twitter")) {
-        return "You can share your event on Twitter by clicking on the 'Share on Twitter' button.";
-    } else if (lowerMessage.includes("email")) {
-        return "You can share your event via Email by clicking on the 'Share via Email' button.";
-    } else if (lowerMessage.includes("copy")) {
-        return "You can copy your event link by clicking on the 'Copy' button.";
-    } else if (lowerMessage.includes("minimize")) {
-        return "You can minimize the chatbot by clicking on the '-' button.";
-    } else if (lowerMessage.includes("maximize")) {
-        return "You can maximize the chatbot by clicking on the '+' button.";
-    } else if (lowerMessage.includes("close")) {
-        return "You can close the chatbot by clicking on the 'x' button.";
-    } else if (lowerMessage.includes("open")) {
-        return "You can open the chatbot by clicking on the '+' button.";
-    } else if (lowerMessage.includes("set reminder")) {
-        return "You can set a reminder for your event by entering the number of hours before the event you want to be reminded. I'll let you know when it's time!";
-    } else {
-        return "I'm not sure about that, can you ask differently or specify more?";
+    const responses = [
+        {
+            keywords: ["hello", "hi", "hey"],
+            response: "Hello! How can I help you with your event countdowns today?"
+        },
+        {
+            keywords: ["about"],
+            response: "EventHorizon is an app to help you count down to significant events in your life. You can select from predefined events or set up your custom events."
+        },
+        {
+            keywords: ["how are you"],
+            response: "I'm just a bot, but I'm here and ready to help!"
+        },
+        {
+            keywords: ["event"],
+            response: "You can create countdowns for different events. If you have a custom event, just specify its name and date!"
+        },
+        {
+            keywords: ["background"],
+            response: function() {
+                setRandomBackgroundImage();
+                displayRandomQuote();
+                return "Background and quote updated!";
+            }
+        },
+        {
+            keywords: ["quote"],
+            response: function() {
+                displayRandomQuote();
+                return "Quote refreshed!";
+            }
+        },
+        {
+            keywords: ["thanks", "thank you"],
+            response: "You're welcome! Let me know if you have more questions."
+        },
+        {
+            keywords: ["who are you"],
+            response: "I'm the EventHorizon Assistant. I'm here to guide you on using this app and answer any questions you might have."
+        },
+        {
+            keywords: ["features"],
+            response: "You can set countdowns for different events, choose from predefined ones or create your custom event, change the background, get inspired by a quote, and now you can chat with me for more information!"
+        },
+        {
+            keywords: ["joke"],
+            response: "Why did the calendar factory get shut down? Because it took a day off!"
+        },
+        {
+            keywords: ["countdown"],
+            response: "EventHorizon helps you create countdowns for special events in your life, keeping track of the days, hours, minutes, and seconds until your event!"
+        },
+        {
+            keywords: ["custom event"],
+            response: "You can create a custom event by entering its name and date. Just use the 'Set Event' button!"
+        },
+        {
+            keywords: ["inspiration"],
+            response: "Get inspired! Ask for an inspirational quote, and I'll provide you with some motivational words."
+        },
+        {
+            keywords: ["help"],
+            response: "I'm here to assist! Feel free to ask about events, backgrounds, quotes, or any questions you have about EventHorizon."
+        },
+        {
+            keywords: ["bye", "goodbye"],
+            response: "Farewell! Don't hesitate to return if you have more questions. Happy event-planning!"
+        },
+        {
+            keywords: ["weather"],
+            response: "You can check the weather by entering a city name. I'll tell you the temperature, weather, humidity, and chance of rain."
+        },
+        {
+            keywords: ["share"],
+            response: "You can share your event with friends by clicking on the 'Share' button. You can share via Facebook, Twitter, or Email."
+        },
+        {
+            keywords: ["notes"],
+            response: "You can take notes for your event by clicking on the 'Notes' button. You can save your notes and view them later."
+        },
+        {
+            keywords: ["reminder", "set reminder"],
+            response: "You can set a reminder for your event by entering the number of hours before the event you want to be reminded. I'll let you know when it's time!"
+        },
+        {
+            keywords: ["chatbot"],
+            response: "You can chat with me! Just click on the + button to open the chatbot."
+        },
+        {
+            keywords: ["edit"],
+            response: "You can edit your event by clicking on the 'Edit Event' button. You can change the event name and date."
+        },
+        {
+            keywords: ["delete"],
+            response: "You can delete your custom event by clicking on the 'Delete' button next to the event."
+        },
+        {
+            keywords: ["facebook"],
+            response: "You can share your event on Facebook by clicking on the 'Share on Facebook' button."
+        },
+        {
+            keywords: ["twitter"],
+            response: "You can share your event on Twitter by clicking on the 'Share on Twitter' button."
+        },
+        {
+            keywords: ["email"],
+            response: "You can share your event via Email by clicking on the 'Share via Email' button."
+        },
+        {
+            keywords: ["copy"],
+            response: "You can copy your event link by clicking on the 'Copy' button."
+        },
+        {
+            keywords: ["minimize"],
+            response: "You can minimize the chatbot by clicking on the '-' button."
+        },
+        {
+            keywords: ["maximize"],
+            response: "You can maximize the chatbot by clicking on the '+' button."
+        },
+        {
+            keywords: ["close"],
+            response: "You can close the chatbot by clicking on the 'x' button."
+        },
+        {
+            keywords: ["open"],
+            response: "You can open the chatbot by clicking on the '+' button."
+        }
+    ];
+
+    for (let responseObj of responses) {
+        for (let keyword of responseObj.keywords) {
+            if (lowerMessage.includes(keyword)) {
+                return typeof responseObj.response === 'function' ? responseObj.response() : responseObj.response;
+            }
+        }
     }
+
+    return "I'm not sure about that, can you ask differently or specify more?";
 }
 
 const chatbotInput = document.getElementById("chatbotInput");
