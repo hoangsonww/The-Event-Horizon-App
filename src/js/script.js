@@ -23,12 +23,12 @@ const quotes = [
 ];
 
 const bgImages = [
-    {url: 'url("/images/snow.jpg")', isDark: false}, // Mostly white
-    {url: 'url("/images/R.jfif")', isDark: true},      // Mostly dark
-    {url: 'url("/images/R (1).jfif")', isDark: false},  // Mostly dark
-    {url: 'url("/images/j1O8bCz.jpg")', isDark: true}, // Mostly dark
-    {url: 'url("/images/wp4670197.jpg")', isDark: true}, // Mostly dark
-    {url: 'url("/images/wp4511352.jpg")', isDark: true}  // Mostly dark
+    {url: 'url("../../images/snow.jpg")', isDark: false}, // Mostly white
+    {url: 'url("../../images/R.jfif")', isDark: true},      // Mostly dark
+    {url: 'url("../../images/R (1).jfif")', isDark: false},  // Mostly dark
+    {url: 'url("../../images/j1O8bCz.jpg")', isDark: true}, // Mostly dark
+    {url: 'url("../../images/wp4670197.jpg")', isDark: true}, // Mostly dark
+    {url: 'url("../../images/wp4511352.jpg")', isDark: true}  // Mostly dark
 ];
 
 function displayRandomQuote() {
