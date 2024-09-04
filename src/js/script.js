@@ -23,12 +23,12 @@ const quotes = [
 ];
 
 const bgImages = [
-    {url: 'url("../../The-Event-Horizon-App/images/snow.jpg")', isDark: false}, // Mostly white
-    {url: 'url("../../The-Event-Horizon-App/images/R.jfif")', isDark: true},      // Mostly dark
-    {url: 'url("../../The-Event-Horizon-App/images/R (1).jfif")', isDark: false},  // Mostly dark
-    {url: 'url("../../The-Event-Horizon-App/images/j1O8bCz.jpg")', isDark: true}, // Mostly dark
-    {url: 'url("../../The-Event-Horizon-App/images/wp4670197.jpg")', isDark: true}, // Mostly dark
-    {url: 'url("../../The-Event-Horizon-App/images/wp4511352.jpg")', isDark: true}  // Mostly dark
+    {url: 'url("images/snow.jpg")', isDark: false},
+    {url: 'url("images/R.jfif")', isDark: true},
+    {url: 'url("images/R (1).jfif")', isDark: false},
+    {url: 'url("images/j1O8bCz.jpg")', isDark: true},
+    {url: 'url("images/wp4670197.jpg")', isDark: true},
+    {url: 'url("images/wp4511352.jpg")', isDark: true}
 ];
 
 function displayRandomQuote() {
